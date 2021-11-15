@@ -1,0 +1,13 @@
+{% extends "base_template.html" %}
+
+{% block title %} Subir archivos {% endblock %}
+
+{% block content %}
+<div class="uploader" style="padding-top:100px">
+    <form action="/uploader" method="POST" enctype="multipart/form-data">
+        Ahora sube una imagen relacionada al post <br> <br>
+        <input type="file" name="archivo"> <br>
+        <input class="uploader" type="submit">
+    </form>
+</div>
+{% endblock %}

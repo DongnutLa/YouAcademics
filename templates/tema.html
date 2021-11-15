@@ -1,0 +1,29 @@
+{% extends "base_template.html" %}
+
+{% block title %} Contenido {% endblock %}
+
+{% block content %}
+
+<h1 class="text-center">Contenido</h1>
+
+<div class="row mb-2">
+  {% for post in posts %}
+  <div class="col-md-6">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">{{ post.tema }}</strong>
+        <h3 class="mb-0">{{ post.title }}</h3>
+        <div class="mb-1 text-muted">02/09/2021</div>
+        <p class="card-text mb-auto">{{ post.content }}</p>
+        <a href="{{ url_for('show_post', slug=post.title_slug, asign=post.asignatura, autor=post.autor, tema=post.tema) }}" class="stretched-link">Seguir leyendo</a>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <a href="{{ url_for('show_post', slug=post.title_slug, asign=post.asignatura, autor=post.autor, tema=post.tema) }}"><img src="{{ url_for("static", filename="img/entradas/" ~ post.id) }}" alt="" width="300" height="220" class="centerimg"></a>
+
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

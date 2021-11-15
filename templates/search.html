@@ -1,0 +1,29 @@
+{% extends "base_template.html" %}
+
+{% block title %} Búsqueda {% endblock %}
+
+<h3> RESULTADO DE LA BÚSQUEDA: </h3>
+
+{% block content %}
+
+<h1 class="text-center">Resultado de la búsqueda</h1>
+
+<div class="row mb-2">
+    {% for posts in post %}
+        <div class="col-md-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary">{{ posts.tema }}</strong>
+                <h3 class="mb-0">{{ posts.title }}</h3>
+                <div class="mb-1 text-muted">02/09/2021</div>
+                <p class="card-text mb-auto">{{ posts.content }}</p>
+                <a href="{{ url_for('show_post', slug=posts.title_slug, asign=posts.asignatura, autor=posts.autor, tema=posts.tema) }}" class="stretched-link">Seguir leyendo</a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+                <a href="{{ url_for('show_post', slug=posts.title_slug, asign=posts.asignatura, autor=posts.autor, tema=posts.tema) }}"><img src="{{ url_for("static", filename="img/entradas/" ~ posts.id) }}" alt="" width="300" height="220"></a>
+            </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

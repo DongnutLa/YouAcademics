@@ -1,0 +1,211 @@
+{% extends "base_template.html" %}
+
+{% block title %}YouAcademics{% endblock %}
+
+
+{% block content %}
+
+<!-- Introducción  -->
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="2000">
+        <img id="carrusel1" src="{{ url_for("static", filename="img/slide/1.jpg") }}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1 style="font-weight: bold; color: black;" >YouAcademics</h1>
+          <h4 style="font-weight: bold; color: black;">Una web donde podrás encontrar contenido académico de youtubers colombianos</h4>
+          <p>Made in Colombia</p>
+        </div>
+      </div>
+    {% for val in [2,3,4] %}
+      <div class="carousel-item" data-bs-interval="2000">
+        <img id="carrusel1" src="{{ url_for("static", filename="img/slide/" ~ val ~ ".jpg") }}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1 style="font-weight: bold; color: black;">YouAcademics</h1>
+          <h4 style="font-weight: bold; color: black;">Una web donde podrás encontrar contenido académico de youtubers colombianos</h4>
+          <p >Made in Colombia</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>  
+</div>
+
+<!-- fin de introducción -->
+
+  <!-- sección contenido -->
+  <h1 id="asignaturas" class="text-center">Asignaturas</h1>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    {% for post in posts %}
+    <div class="col">
+        <div class="card shadow-sm">
+          <a href="{{ url_for('category', asign=post.asignatura) }}"><img src="{{ url_for("static", filename="img/asignaturas/" ~ post.asignatura ~ ".jpg" ) }}" alt="" width="400" height="400" class="centerimg"></a>
+
+            <div class="card-body">
+                <p class="card-text">Aquí encontrarás todo lo relacionado a la asignatura {{ post.asignatura }}. <br>¡A aprender!</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a href="{{ url_for('category', asign=post.asignatura) }}"> <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button> </a>
+                        {% if current_user.is_admin %}
+                        <a> <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button> </a>
+                        {% endif %}
+                    </div>
+                    <small class="text-muted">{{ post.asignatura }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!--fin de la sección -->
+
+  <!-- Sección acerca de nosotros -->
+  <section id="about" class="section">
+    <div class="container-lg">
+
+      <h1 class="text-center"><span>¿Quiénes somos?</span></h1>
+      <p class="text-center">
+        Queremos que aprendas muchas cosas, en esta página web podrás encontrar gran variedad de contenido audiovisual que de seguro te ayudará en tu vida académica. 
+        A continuación podrás encontrar una breve descripción de cada uno de nosotros, los creadores de la página.
+      </p>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="team-box">
+            <img src="{{ url_for("static", filename="img/dummies/team1.jpg") }}" alt="" class="img-responsive d-block w-100" />
+            <div class="roles text-center">
+              <h5 class="text-center"><strong>Brayan Maldonado</strong></h5>
+              <p class="text-center">
+                Estudiante de Ingeniería de Sistemas y Computación de la Universidad Nacional de Colombia.
+              </p>
+                <a href="https://www.facebook.com/brayan.maldonado.35513/"><img src="{{ url_for("static", filename="img/facebook.svg") }}" alt="" width="30" height="24"></a>
+                <a ><img src="{{ url_for("static", filename="img/twitter.svg") }}" alt="" width="30" height="24"></a>
+                <a href="https://www.instagram.com/_santiago_maldonado/"><img src="{{ url_for("static", filename="img/instagram.svg") }}" alt="" width="30" height="24"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="team-box">
+            <img src="{{ url_for("static", filename="img/dummies/team2.jpg") }}" alt="" class="img-responsive d-block w-100" />
+            <div class="roles text-center">
+              <h5 class="text-center"><strong>Luis Hernández</strong></h5>
+              <p class="text-center">
+                Ingeniero electrónico de la Universidad Nacional de Colombia. Programador y diseñador aficionado.
+              </p>
+                <a href="https://www.facebook.com/DongnutLa/"><img src="{{ url_for("static", filename="img/facebook.svg") }}" alt="" width="30" height="24"></a>
+                <a href="https://twitter.com/DongnutLa"><img src="{{ url_for("static", filename="img/twitter.svg") }}" alt="" width="30" height="24"></a>
+                <a href="https://www.instagram.com/lushowu/"><img src="{{ url_for("static", filename="img/instagram.svg") }}" alt="" width="30" height="24"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="team-box">
+            <img src="{{ url_for("static", filename="img/dummies/team3.jpg") }}" alt="" class="img-responsive d-block w-100" />
+            <div class="roles text-center">
+              <h5 class="text-center"><strong>David Camelo</strong></h5>
+              <p class="text-center">
+                Estudiante de Ingeniería de Sistemas y computación de la Universidad Nacional de Colombia.
+              </p>
+                <a href="https://www.facebook.com/TaurusFansub"><img src="{{ url_for("static", filename="img/facebook.svg") }}" alt="" width="30" height="24" class="d-inline-block align-text-top"></a>
+                <a href="#"><img src="{{ url_for("static", filename="img/twitter.svg") }}" alt="" width="30" height="24" class="d-inline-block align-text-top"></a>
+                <a href="#"><img src="{{ url_for("static", filename="img/instagram.svg") }}" alt="" width="30" height="24" class="d-inline-block align-text-top"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="team-box">
+            <img src="{{ url_for("static", filename="img/dummies/team4.jpg") }}" alt="" class="img-responsive d-block w-100" />
+            <div class="roles text-center">
+              <h5 class="text-center"><strong>Andrés Galeano</strong></h5>
+              <p class="text-center">
+                Estudiante de Ingeniería Industrial de la Universidad Nacional de Colombia.
+              </p>
+                <a href="https://www.facebook.com/stephen.andrew.3950/"><img src="{{ url_for("static", filename="img/facebook.svg") }}" alt="" width="30" height="24"></a>
+                <a href="#"><img src="{{ url_for("static", filename="img/twitter.svg") }}" alt="" width="30" height="24"></a>
+                <a href="https://www.instagram.com/andres.n_18/"><img src="{{ url_for("static", filename="img/instagram.svg") }}" alt="" width="30" height="24"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Fin de sección-->
+
+  <!-- sección contáctanos -->
+  <section id="contact" class="contactanos">
+    
+          <div class="heading">
+            <h1 class="text-center"><span>Ponte en contacto con nosotros</span></h1>
+          </div>
+          <div class="sub-heading">
+            <p class="text-center">
+              Si requieres de un asesoramiento, has encontrado un error, quieres ser creador de contenido, o simplemente quieres saludarnos ¡háznolo saber! 
+            </p>
+            <p class="text-center">
+              Solo debes de llenar el siguiente formulario, que nosotros nos encargamos del resto.
+            </p>
+          </div>
+
+          <div class="position-relative">
+            <div class="position-absolute top-50 start-50 translate-middle-x">
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                    <div id="contactanosnombre" class="mw-60 p-3"style="width: 500px;">
+                        {{ form.nombre.label(class="form-label") }}
+                        {{ form.nombre(class="form-control") }}<br>
+                        {% for error in form.nombre.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div id="contactanoscorreo" class="mw-60 p-3"style="width: 500px;">
+                        {{ form.correo.label(class="form-label") }}
+                        {{ form.correo(class="form-control") }}<br>
+                        {% for error in form.correo.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div id="contactanosasunto" class="mw-60 p-3"style="width: 500px;">
+                      {{ form.asunto.label(class="form-label") }}
+                      {{ form.asunto(class="form-control") }}<br>
+                      {% for error in form.asunto.errors %}
+                      <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                    </div>
+                    <div id="contactanosmensaje" class="mw-60 p-3"style="width: 500px;">
+                      {{ form.mensaje.label(class="form-label") }}
+                      {{ form.mensaje(class="form-control") }}<br>
+                      {% for error in form.mensaje.errors %}
+                      <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                    </div>
+                    <div id="botonenviar" class="mw-60 p-3" style="width: 500px;">
+                      {{ form.submit(class="btn btn-secondary") }}
+                    </div>
+                </form>
+            </div>
+          </div>   
+  </section>
+  <!--fin sección contáctanos -->
+
+  <!--Inicio Footer -->
+  <!--<section style="background-color: darkgrey;">
+    <footer>
+      <div class="aligncenter">
+        <p class="text-center">
+          &copy; YouAcademics - Derechos reservados
+        </p>
+      </div>
+    </footer>
+  </section>   -->
+  <!--Fin del Footer --> 
+
+{% endblock %}

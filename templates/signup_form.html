@@ -1,0 +1,50 @@
+{% extends "base_template.html" %}
+
+{% block title %}Registro de usuarios{% endblock %}
+
+{% block content %}
+
+<div id="registrarse" class="card-body">
+    <img id="loguito" src="{{ url_for("static", filename="img/logo.svg") }}" alt="" width="150" height="150">
+    <h1 class="card-title text-center" style="padding-top:0px">Regístrate</h1>
+</div>
+
+<div id="formulario2" class="position-relative">
+    <div class="position-absolute top-50 start-50 translate-middle-x">
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div id="usuarioregistrarse" class="mw-60 p-3"style="width: 400px;">
+                {{ form.nickname.label(class="form-label") }}
+                {{ form.nickname(class="form-control") }}<br>
+                {% for error in form.nickname.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div id="nombreregistrarse" class="mw-60 p-3"style="width: 400px;">
+                {{ form.name.label(class="form-label") }}
+                {{ form.name(class="form-control") }}<br>
+                {% for error in form.name.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div id="correoregistrarse" class="mw-60 p-3"style="width: 400px;">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control") }}<br>
+                {% for error in form.email.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div id="contraseñaregistrarse" class="mw-60 p-3"style="width: 400px;">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-control") }}<br>
+                {% for error in form.password.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div id="botonregistrarse" class="mw-60 p-3"style="width: 400px;">
+                {{ form.submit(class="btn btn-secondary") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

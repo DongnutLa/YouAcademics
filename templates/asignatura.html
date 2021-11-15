@@ -1,0 +1,31 @@
+{% extends "base_template.html" %}
+
+{% block title %} Autor {% endblock %}
+
+{% block content %}
+
+<h1 class="text-center">Autores/as</h1>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  {% for post in posts %}
+  <div class="col">
+      <div class="card shadow-sm">
+        <a href="{{ url_for('autor', asign=post.asignatura, autor=post.autor) }}"><img id="imagenasignatura" src="{{ url_for("static", filename="img/autores/" ~ post.autor ~ ".jpg" ) }}" alt="" width="500" height="400" class="centerimg"></a>
+
+          <div class="card-body">
+              <p style="text-align: center;" class="card-text">Aquí encontrarás todo lo relacionado al youtuber {{ post.autor }} en la asignatura {{ post.asignatura }}. <br>¡A aprender!</p>
+              <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                      <a href="{{ url_for('autor', asign=post.asignatura, autor=post.autor) }}"> <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button> </a>
+                      {% if current_user.is_admin %}
+                      <a> <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button> </a>
+                      {% endif %}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

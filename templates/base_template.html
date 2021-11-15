@@ -1,0 +1,272 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="{{ url_for("static", filename="img/logo.svg") }}"> 
+<!--   <meta name="description" content="Página web youtubers creada para el proyecto de poo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Brayan Maldonado, Luis Hernández, David Camelo, Andrés Galeanoo" /> -->
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <title>{% block title %}{% endblock %}</title>
+  <!-- <link rel="stylesheet" href="{{ url_for("static", filename="base.css") }}" /> -->
+
+  <style>
+
+.centerimg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+    
+    #contactanosnombre{
+      border-top: 2px solid rgb(110, 105, 105);
+      border-left: 2px solid rgb(110, 105, 105);
+      border-right: 2px solid rgb(110, 105, 105); 
+      background-color: rgb(213, 214, 206);
+    }
+
+    #contactanoscorreo{
+      border-top: 2px solid rgb(110, 105, 105);
+      border-left: 2px solid rgb(110, 105, 105);
+      border-right: 2px solid rgb(110, 105, 105); 
+      background-color: rgb(213, 214, 206);
+    }
+
+    #contactanosasunto{
+      border-top: 2px solid rgb(110, 105, 105);
+      border-left: 2px solid rgb(110, 105, 105);
+      border-right: 2px solid rgb(110, 105, 105); 
+      background-color: rgb(213, 214, 206);
+    }
+
+    #contactanosmensaje{
+      border-bottom: 2px solid rgb(110, 105, 105);
+      border-left: 2px solid rgb(110, 105, 105);
+      border-right: 2px solid rgb(110, 105, 105); 
+      background-color: rgb(213, 214, 206);
+    }
+
+
+    #titulocreapublicacion{
+      border-top: 2px solid rgb(110, 105, 105);
+      border-left: 2px solid rgb(110, 105, 105);
+      border-right: 2px solid rgb(110, 105, 105); 
+      background-color: rgb(213, 214, 206);
+    }
+
+    #asignaturacreapublicacion{
+      border-left: 2px solid rgb(110, 105, 105);
+      border-right: 2px solid rgb(110, 105, 105); 
+      background-color: rgb(213, 214, 206);
+      }
+    
+    #autorcreapublicacion{
+      border-left: 2px solid rgb(110, 105, 105);
+      border-right: 2px solid rgb(110, 105, 105); 
+      background-color: rgb(213, 214, 206);
+    }
+
+    #temacreapublicacion{
+      border-left: 2px solid rgb(110, 105, 105);
+      border-right: 2px solid rgb(110, 105, 105); 
+      background-color: rgb(213, 214, 206);
+    }
+    
+    #direccioncreapublicacion{
+      border-left: 2px solid rgb(110, 105, 105);
+      border-right: 2px solid rgb(110, 105, 105); 
+      background-color: rgb(213, 214, 206);
+    }
+
+    #contenidocreapublicacion{
+      border-bottom: 2px solid rgb(110, 105, 105);
+      border-left: 2px solid rgb(110, 105, 105);
+      border-right: 2px solid rgb(110, 105, 105); 
+      background-color: rgb(213, 214, 206);
+    }
+
+    #usuarioregistrarse{
+      border-top: 2px solid rgb(110, 105, 105);
+      border-left: 2px solid rgb(110, 105, 105);
+      border-right: 2px solid rgb(110, 105, 105); 
+      background-color: rgb(213, 214, 206);
+    }
+    
+    #nombreregistrarse{
+      border-left: 2px solid rgb(110, 105, 105);
+      border-right: 2px solid rgb(110, 105, 105); 
+      background-color: rgb(213, 214, 206);
+    }
+    
+    #correoregistrarse{
+      border-left: 2px solid rgb(110, 105, 105);
+      border-right: 2px solid rgb(110, 105, 105); 
+      background-color: rgb(213, 214, 206);
+    }
+    
+    #contraseñaregistrarse{
+      border-bottom: 2px solid rgb(110, 105, 105);
+      border-left: 2px solid rgb(110, 105, 105);
+      border-right: 2px solid rgb(110, 105, 105); 
+      background-color: rgb(213, 214, 206);
+    }
+    
+    
+
+    #imagenasignatura{
+      padding-left: 50px;
+    }
+
+    #ytemb{
+      margin:auto;
+    }
+
+    div.uploader
+    {
+        display: block;
+        text-align: center;
+        font-size: 200%;
+    }
+    .uploader
+    {
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+    }
+
+    #loguito{
+      display:block;
+      margin:auto;
+    }
+
+    #logo{
+      padding-right: 5px;
+  
+    }
+    #youacademicsize{
+      font-size: 35px;
+      padding-left: 10px;
+      padding-bottom: 10px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+    }
+
+    #YouAcademicTitle{
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size: 20px;
+      padding-left: 20px;
+    }   
+
+    #BarraBuscar{
+      padding-top: 25px;
+      padding-right: 20px;
+      position: absolute;
+      height:100%;
+      width:35%;
+      right:20px;
+    }
+
+    #botonenviar{
+      text-align: center;
+    }
+
+    #botoniniciar{
+      text-align: center;
+    }
+
+    #botonregistrarse{
+      text-align: center;
+    }
+
+    #botoncrear{
+      text-align: center;
+    }
+
+    #registrarse{
+      padding-bottom: 5px;
+    }
+
+    #formulario2{
+      padding-top: 5px;
+    }
+
+   #correo2{
+     border-bottom: 2px solid rgb(110, 105, 105);
+     border-left: 2px solid rgb(110, 105, 105);
+     border-right: 2px solid rgb(110, 105, 105); 
+     background-color:rgb(213, 214, 206);
+   }
+
+   #correo{
+    padding-top: 15px;
+    border-top: 2px solid rgb(110, 105, 105);
+    border-left: 2px solid rgb(110, 105, 105);
+    border-right: 2px solid rgb(110, 105, 105);
+    background-color: rgb(213, 214, 206);
+   }
+
+    #formulario{
+      padding-top: 25px;
+      padding-bottom: 30px;
+    }
+
+    #registrate{
+      text-align: center;
+    }
+
+    #carrusel3{
+      height: 700px;
+    }
+
+    #carrusel2{
+      height: 700px;
+    }
+
+    #carrusel1{
+      height: 700px;
+    }
+    
+    #asignaturas{
+      padding-top:50px;
+      padding-bottom:50px;
+    }
+    
+    .text-center{
+      padding-top:5px;
+      padding-bottom:5px;
+    }
+
+    #about{
+      background-color: rgb(250, 247, 244);
+      border: 3px solid rgb(209, 204, 204);
+      padding-top: 50px;
+      padding-bottom: 50px;
+    } 
+
+    .contactanos{
+      padding-top: 80px;
+    } 
+    
+  </style>
+
+</head>
+
+<body>
+
+  {% include 'navbar.html'%}
+
+
+  {% block content %}{% endblock %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+ 
+
+
+
+</body>
+
+</html>

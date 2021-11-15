@@ -1,0 +1,32 @@
+{% extends "base_template.html" %}
+
+{% block title %} Temáticas {% endblock %}
+
+{% block content %}
+
+<h1 class="text-center">Temáticas</h1>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  {% for post in posts %}
+  <div class="col">
+      <div class="card shadow-sm">
+        <a href="{{ url_for('tema', asign=post.asignatura, autor=post.autor, tema=post.tema) }}"><img src="{{ url_for("static", filename="img/temas/" ~ post.tema ~ ".jpg" ) }}" alt="" width="400" height="400" class="centerimg"></a>
+
+          <div class="card-body">
+              <p class="card-text">Aquí encontrarás todo lo relacionado a la temática de {{ post.tema }} del autor {{ post.autor }} en la asignatura {{ post.asignatura }}. <br>¡A aprender!</p>
+              <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                      <a href="{{ url_for('tema', asign=post.asignatura, autor=post.autor, tema=post.tema) }}"> <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button> </a>
+                      {% if current_user.is_admin %}
+                      <a> <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button> </a>
+                      {% endif %}
+                  </div>
+                  <small class="text-muted">9 mins</small>
+              </div>
+          </div>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

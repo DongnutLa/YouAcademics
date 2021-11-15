@@ -1,0 +1,39 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div id="YouAcademicTitle" class="container-fluid fst-italic">
+      <a id ="youacademicsize" class="navbar-brand" href="{{ url_for('index') }}"> <img id="logo" src="{{ url_for("static", filename="img/logo.svg") }}" alt="" width="60" height="60" class="d-inline-block align-text-top">YouAcademics</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Inicio</a>
+          </li>
+          {% if current_user.is_admin %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('post_form') }}">Crear publicación</a>
+          </li>
+          {% endif %}
+          {% if current_user.is_anonymous %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">Iniciar sesión</a>
+          </li>
+          <li class="nav-item"> | </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('show_signup_form') }}">Registrarse</a>
+          </li>
+          {% else %}
+          <li class="nav-item"> <a class="nav-link"> {{ current_user.nickname }} </a> </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout') }}">Cerrar sesión</a></li>
+          {% endif %}
+        </ul>
+        <div id="BarraBuscar">
+          <form action="/search" method="GET" class="d-flex">
+            <input class="form-control me-2" type="search" name="busqueda" placeholder="Buscar" aria-label="Buscar">
+            <button class="btn btn-outline-light type="submit">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>

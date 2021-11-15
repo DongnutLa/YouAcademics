@@ -1,0 +1,70 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    {% if form.title.data %}
+        {{ form.title.data }}
+    {% else %}
+        Nueva entrada
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="card-body">
+    <h3 class="card-title text-center">Crea una publicación</h3>
+</div>
+
+<div class="position-relative">
+    <div class="position-absolute top-50 start-50 translate-middle-x">
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div id="titulocreapublicacion" class="mw-60 p-3"style="width: 400px;">
+                {{ form.title.label(class="form-label") }}
+                {{ form.title(class="form-control") }}<br>
+                {% for error in form.title.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div id="asignaturacreapublicacion"  class="mw-60 p-3"style="width: 400px;">
+                {{ form.asignatura.label(class="form-label") }}
+                {{ form.asignatura(class="form-control") }}<br>
+                {% for error in form.asignatura.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div id="autorcreapublicacion" class="mw-60 p-3"style="width: 400px;">
+                {{ form.autor.label(class="form-label") }}
+                {{ form.autor(class="form-control") }}<br>
+                {% for error in form.autor.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div id="temacreapublicacion" class="mw-60 p-3"style="width: 400px;">
+                {{ form.tema.label(class="form-label") }}
+                {{ form.tema(class="form-control") }}<br>
+                {% for error in form.tema.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div id="direccioncreapublicacion" class="mw-60 p-3"style="width: 400px;">
+                {{ form.url.label(class="form-label") }}
+                {{ form.url(class="form-control") }}<br>
+                {% for error in form.url.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div id="contenidocreapublicacion" class="mw-60 p-3"style="width: 400px;">
+                {{ form.content.label(class="form-label") }}
+                {{ form.content(class="form-control") }}<br>
+                {% for error in form.content.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div id="botoncrear" class="mw-60 p-3"style="width: 400px;">
+                {{ form.submit(class="btn btn-secondary") }}
+            </div>
+        </form> 
+    </div>
+</div>
+
+{% endblock %} 
